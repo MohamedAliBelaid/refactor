@@ -23,7 +23,22 @@ connection.once('open', function(){
     console.log('MongoDB database connection established successfully');
 })
 
-
+app.post('/CreateUser',(req,res)=>{
+   
+    var Id=req.body.Id;
+var FirstName=req.body.FirstName
+var lastName=req.body.lastName;
+var Password=req.body.Password;
+var Role=req.body.Role;
+console.log(FirstName,lastName,Password,Role)
+User.create({ // create user 
+    Id :Id,
+    FirstName: FirstName,
+    lastName: lastName,
+    Password: Password,
+    Role:Role
+    });
+})
 // userRoutes.get('/:id', (req, res) => {
 //     User.findById(req.params.id, function(err, user){
 //         if(err){
@@ -64,26 +79,26 @@ userRoutes.post('/login', async (req, res) => {
 
 // @route Post api/users/:findById
 // @description Update a user
-userRoutes.post('/update/:id', (req, res) => {
-    User.findById(req.params.id, (err, user) => {
-        if (!user){
-            res.status(404).send("data is not found");
-        }
-        else{
-            user.userId = req.body.userId;
-            user.userFirstName = req.body.userFirstName;
-            user.userLastName = req.body.userLastName;
-            user.userPassword = req.body.userPassword;
-            user.userRole = req.body.userRole;
-            user.save().then(user => {
-                res.json(user);
-            })
-        }           
-    })
-    .catch(err => {
-        res.status(400).send("Update not possible");
-    });
-});
+// userRoutes.post('/update/:id', (req, res) => {
+//     User.findById(req.params.id, (err, user) => {
+//         if (!user){
+//             res.status(404).send("data is not found");
+//         }
+//         else{
+//             user.userId = req.body.userId;
+//             user.userFirstName = req.body.userFirstName;
+//             user.userLastName = req.body.userLastName;
+//             user.userPassword = req.body.userPassword;
+//             user.userRole = req.body.userRole;
+//             user.save().then(user => {
+//                 res.json(user);
+//             })
+//         }           
+//     })
+//     .catch(err => {
+//         res.status(400).send("Update not possible");
+//     });
+// });
 
 // @route  DELETE api/users/:id
 // @description Delete a user

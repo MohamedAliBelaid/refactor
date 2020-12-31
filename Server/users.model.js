@@ -3,23 +3,23 @@ const Schema = mongoose.Schema;
 
 // Create Schema 
 let User = new Schema({
-    userId: {
-        type: Number,
-        required: true
-    },
-    userFirstName: {
+    Id: {
         type: String,
         required: true
     },
-    userLastName: {
+    FirstName: {
         type: String,
         required: true
     },
-    userPassword: {
+    lastName: {
         type: String,
         required: true
     },
-    userRole: {
+    Password: {
+        type: String,
+        required: true
+    },
+    Role: {
         type: String,
         required: true
     }
